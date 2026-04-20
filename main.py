@@ -1,9 +1,10 @@
-from api.quote_api import QuoteAPI
-from data_handling import file_handler
+from quote_api import QuoteAPI
 
 def main():
 
     api = QuoteAPI()
+
+    quote_collection = []
 
     while True:
 
@@ -16,8 +17,16 @@ def main():
 
             response = api.quote()
 
-            for item in response:
-                print(item)
+            print("")
+
+            print(response)
+
+            quote_collection.append(response)
+
+        elif selection == "2":
+
+            for quote in quote_collection:
+                print(quote)
 
 if __name__ == "__main__":
     main()
