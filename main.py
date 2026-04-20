@@ -15,18 +15,36 @@ def main():
 
         if selection == "1":
 
-            response = api.quote()
+            try:
 
-            print("")
+                quote, author = api.quote()
 
-            print(response)
+                output = f"\n'{quote}'\n\n - {author}"
 
-            quote_collection.append(response)
+                print(output)
+
+                print("\nWould you like to add this quote to your quote collection? (y/n)")
+
+                yes_or_no = input("\n>> ").lower()
+
+                if yes_or_no == "y":
+
+                    quote_collection.append(output)
+
+                    print("\nQuote added!")
+
+                else:
+
+                    pass
+
+            except:
+
+                print("Too many quotes! Try again later.")
 
         elif selection == "2":
 
-            for quote in quote_collection:
-                print(quote)
+            for output in quote_collection:
+                print(output)
 
 if __name__ == "__main__":
     main()
